@@ -1,0 +1,34 @@
+﻿
+<div>
+    <br />
+</div>
+
+<button class="btn btn-default" id="getSomeWeather">What's the weather?</button>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script language="javascript">
+        $(document).ready(function () {
+
+            $("#getSomeWeather").click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: 'https://forecast.weather.gov/MapClick.php?lat=38.4247341&lon=-86.9624086&FcstType=json', //https://api.weather.gov/points/39.0693,-94.6716
+                    success: function (data) {
+                        alert(data.data.weather);
+                    },
+                    error: function () {
+                        alert("Error while inserting data");
+                    }
+                });
+                //// This is the short-handed way https://api.jquery.com/jquery.get/
+                //$.get("https://api.chucknorris.io/jokes/random", function (data) {
+                //    alert(data.value);
+            
+            })
+        });
+    </script>
+
+}
+
